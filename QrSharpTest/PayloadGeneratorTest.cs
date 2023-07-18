@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Reflection;
 using QrSharp;
 using QrSharpTest.Helpers;
@@ -786,7 +786,7 @@ public class PayloadGeneratorTest
     public void calendarevent_should_build_universal()
     {
         var subject = "Release party";
-        var description = "A small party for the new QrCoder. Bring some beer!";
+        var description = "A small party for the new QrSharp. Bring some beer!";
         var location = "Programmer's paradise, Beachtown, Paradise";
         var alldayEvent = false;
         var begin = new DateTime(2016, 01, 03, 12, 00, 00);
@@ -797,7 +797,7 @@ public class PayloadGeneratorTest
             new PayloadGenerator.CalendarEvent(subject, description, location, begin, end, alldayEvent, encoding);
 
         generator.ToString().ShouldBe(
-            $"BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrCoder. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103T120000{Environment.NewLine}DTEND:20160103T143000{Environment.NewLine}END:VEVENT");
+            $"BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrSharp. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103T120000{Environment.NewLine}DTEND:20160103T143000{Environment.NewLine}END:VEVENT");
     }
 
 
@@ -806,7 +806,7 @@ public class PayloadGeneratorTest
     public void calendarevent_should_build_ical()
     {
         var subject = "Release party";
-        var description = "A small party for the new QrCoder. Bring some beer!";
+        var description = "A small party for the new QrSharp. Bring some beer!";
         var location = "Programmer's paradise, Beachtown, Paradise";
         var alldayEvent = false;
         var begin = new DateTime(2016, 01, 03, 12, 00, 00);
@@ -817,7 +817,7 @@ public class PayloadGeneratorTest
             new PayloadGenerator.CalendarEvent(subject, description, location, begin, end, alldayEvent, encoding);
 
         generator.ToString().ShouldBe(
-            $"BEGIN:VCALENDAR{Environment.NewLine}VERSION:2.0{Environment.NewLine}BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrCoder. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103T120000{Environment.NewLine}DTEND:20160103T143000{Environment.NewLine}END:VEVENT{Environment.NewLine}END:VCALENDAR");
+            $"BEGIN:VCALENDAR{Environment.NewLine}VERSION:2.0{Environment.NewLine}BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrSharp. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103T120000{Environment.NewLine}DTEND:20160103T143000{Environment.NewLine}END:VEVENT{Environment.NewLine}END:VCALENDAR");
     }
 
 
@@ -826,7 +826,7 @@ public class PayloadGeneratorTest
     public void calendarevent_should_build_allday()
     {
         var subject = "Release party";
-        var description = "A small party for the new QrCoder. Bring some beer!";
+        var description = "A small party for the new QrSharp. Bring some beer!";
         var location = "Programmer's paradise, Beachtown, Paradise";
         var alldayEvent = true;
         var begin = new DateTime(2016, 01, 03);
@@ -837,7 +837,7 @@ public class PayloadGeneratorTest
             new PayloadGenerator.CalendarEvent(subject, description, location, begin, end, alldayEvent, encoding);
 
         generator.ToString().ShouldBe(
-            $"BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrCoder. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103{Environment.NewLine}DTEND:20160103{Environment.NewLine}END:VEVENT");
+            $"BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrSharp. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103{Environment.NewLine}DTEND:20160103{Environment.NewLine}END:VEVENT");
     }
 
 
@@ -867,7 +867,7 @@ public class PayloadGeneratorTest
     public void calendarevent_should_add_unused_params()
     {
         var subject = "Release party";
-        var description = "A small party for the new QrCoder. Bring some beer!";
+        var description = "A small party for the new QrSharp. Bring some beer!";
         var location = "Programmer's paradise, Beachtown, Paradise";
         var alldayEvent = false;
         var begin = new DateTime(2016, 01, 03, 12, 00, 00);
@@ -876,7 +876,7 @@ public class PayloadGeneratorTest
         var generator = new PayloadGenerator.CalendarEvent(subject, description, location, begin, end, alldayEvent);
 
         generator.ToString().ShouldBe(
-            $"BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrCoder. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103T120000{Environment.NewLine}DTEND:20160103T143000{Environment.NewLine}END:VEVENT");
+            $"BEGIN:VEVENT{Environment.NewLine}SUMMARY:Release party{Environment.NewLine}DESCRIPTION:A small party for the new QrSharp. Bring some beer!{Environment.NewLine}LOCATION:Programmer's paradise, Beachtown, Paradise{Environment.NewLine}DTSTART:20160103T120000{Environment.NewLine}DTEND:20160103T143000{Environment.NewLine}END:VEVENT");
     }
 
 
@@ -2968,14 +2968,14 @@ public class PayloadGeneratorTest
         var address = "46BeWrHpwXmHDpDEUmZBWZfoQpdc6HaERCNmx1pEYL2rAcuwufPN9rXHHtyUA4QVy66qeFQkn6sfK8aHYjA3jk3o1Bv16em";
         var amount = 1.3f;
         var paymentId = "1234567890123456789012345678901234567890123456789012345678901234";
-        var recipient = "Raffael Herrmann";
-        var description = "Monero transaction via QrCoder.NET.";
+        var recipient = "Silas Zahner";
+        var description = "Monero transaction via QrSharp.NET.";
         var generator = new PayloadGenerator.MoneroTransaction(address, amount, paymentId, recipient, description);
 
         generator
             .ToString()
             .ShouldBe(
-                "monero://46BeWrHpwXmHDpDEUmZBWZfoQpdc6HaERCNmx1pEYL2rAcuwufPN9rXHHtyUA4QVy66qeFQkn6sfK8aHYjA3jk3o1Bv16em?tx_payment_id=1234567890123456789012345678901234567890123456789012345678901234&recipient_name=Raffael%20Herrmann&tx_amount=1.3&tx_description=Monero%20transaction%20via%20QrCoder.NET.");
+                "monero://46BeWrHpwXmHDpDEUmZBWZfoQpdc6HaERCNmx1pEYL2rAcuwufPN9rXHHtyUA4QVy66qeFQkn6sfK8aHYjA3jk3o1Bv16em?tx_payment_id=1234567890123456789012345678901234567890123456789012345678901234&recipient_name=Silas%20Zahner&tx_amount=1.3&tx_description=Monero%20transaction%20via%20QrSharp.NET.");
     }
 
 

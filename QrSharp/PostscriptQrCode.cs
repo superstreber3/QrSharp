@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Globalization;
 using static QrSharp.QrCodeGenerator;
 
@@ -7,7 +7,7 @@ namespace QrSharp;
 public class PostscriptQrCode : AbstractQrCode, IDisposable
 {
     private const string PS_HEADER = @"%!PS-Adobe-3.0 {3}
-%%Creator: QrCoder.NET
+%%Creator: QrSharp.NET
 %%Title: QrCode
 %%CreationDate: {0}
 %%DocumentData: Clean7Bit
