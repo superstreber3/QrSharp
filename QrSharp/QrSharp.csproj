@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
@@ -26,7 +26,7 @@
 	<RepositoryType>git</RepositoryType>
 	<Description>QrSharp is a simple library built on the foundations of QRCoder, written in C#.NET, which enables you to create QR codes.</Description>
 	<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
-	<SignAssembly>True</SignAssembly>
+	<SignAssembly>False</SignAssembly>
 	<AssemblyOriginatorKeyFile>C:\Projects\Projects\QrSharp\QrSharpKey.snk</AssemblyOriginatorKeyFile>
 	<Title>QrSharp</Title>
 	<Copyright>Copyright (c) 2023 Silas Zahner</Copyright>
