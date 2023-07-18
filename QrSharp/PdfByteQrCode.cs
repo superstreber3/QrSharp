@@ -21,21 +21,11 @@ public class PdfByteQrCode : AbstractQrCode, IDisposable
     }
 
     /// <summary>
-    ///     Creates a PDF document with a black & white Qr code
-    /// </summary>
-    /// <param name="pixelsPerModule"></param>
-    /// <returns></returns>
-    public byte[] GetGraphic(int pixelsPerModule)
-    {
-        return GetGraphic(pixelsPerModule, "#000000", "#ffffff");
-    }
-
-    /// <summary>
     ///     Takes hexadecimal color string #000000 and returns byte[]{ 0, 0, 0 }
     /// </summary>
     /// <param name="colorString">Color in HEX format like #ffffff</param>
     /// <returns></returns>
-    private byte[] HexColorToByteArray(string colorString)
+    private static byte[] HexColorToByteArray(string colorString)
     {
         if (colorString.StartsWith("#"))
         {
@@ -73,7 +63,8 @@ public class PdfByteQrCode : AbstractQrCode, IDisposable
     /// <param name="dpi"></param>
     /// <param name="quality"></param>
     /// <returns></returns>
-    public byte[] GetGraphic(int pixelsPerModule, string darkColorHtmlHex, string lightColorHtmlHex, int dpi = 150,
+    public byte[] GetGraphic(int pixelsPerModule, string darkColorHtmlHex = "#000000",
+        string lightColorHtmlHex = "#ffffff", int dpi = 150,
         long quality = 85)
     {
         var jpgArray = Array.Empty<byte>();

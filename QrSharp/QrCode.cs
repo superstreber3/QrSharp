@@ -67,7 +67,7 @@ public class QrCode : AbstractQrCode, IDisposable
         using var canvas = new SKCanvas(bmp);
         var lightPaint = new SKPaint { Color = lightColor };
         var darkPaint = new SKPaint { Color = darkColor };
-        var drawIconFlag = icon != null && iconSizePercent is > 0 and <= 100;
+        var drawIconFlag = icon is not null && iconSizePercent is > 0 and <= 100;
 
         canvas.Clear(lightColor);
 
@@ -100,7 +100,7 @@ public class QrCode : AbstractQrCode, IDisposable
             iconX + iconDestWidth + iconBorderWidth, iconY + iconDestHeight + iconBorderWidth);
         var iconDestRect = new SKRect(iconX, iconY, iconX + iconDestWidth, iconY + iconDestHeight);
 
-        var iconBgPaint = iconBackgroundColor != null
+        var iconBgPaint = iconBackgroundColor is not null
             ? new SKPaint { Color = iconBackgroundColor.Value }
             : lightPaint;
 

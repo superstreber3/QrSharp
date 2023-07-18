@@ -1,5 +1,5 @@
-using System.Drawing;
 using System.Globalization;
+using SkiaSharp;
 using static QrSharp.QrCodeGenerator;
 
 namespace QrSharp;
@@ -82,15 +82,15 @@ showpage
 
     public string GetGraphic(int pointsPerModule, bool epsFormat = false)
     {
-        var viewBox = new Size(pointsPerModule * QrCodeData.ModuleMatrix.Count,
+        var viewBox = new SKSize(pointsPerModule * QrCodeData.ModuleMatrix.Count,
             pointsPerModule * QrCodeData.ModuleMatrix.Count);
-        return GetGraphic(viewBox, Color.Black, Color.White, true, epsFormat);
+        return GetGraphic(viewBox, SKColors.Black, SKColors.White, true, epsFormat);
     }
 
-    public string GetGraphic(int pointsPerModule, Color darkColor, Color lightColor, bool drawQuietZones = true,
+    public string GetGraphic(int pointsPerModule, SKColor darkColor, SKColor lightColor, bool drawQuietZones = true,
         bool epsFormat = false)
     {
-        var viewBox = new Size(pointsPerModule * QrCodeData.ModuleMatrix.Count,
+        var viewBox = new SKSize(pointsPerModule * QrCodeData.ModuleMatrix.Count,
             pointsPerModule * QrCodeData.ModuleMatrix.Count);
         return GetGraphic(viewBox, darkColor, lightColor, drawQuietZones, epsFormat);
     }
@@ -98,24 +98,24 @@ showpage
     public string GetGraphic(int pointsPerModule, string darkColorHex, string lightColorHex, bool drawQuietZones = true,
         bool epsFormat = false)
     {
-        var viewBox = new Size(pointsPerModule * QrCodeData.ModuleMatrix.Count,
+        var viewBox = new SKSize(pointsPerModule * QrCodeData.ModuleMatrix.Count,
             pointsPerModule * QrCodeData.ModuleMatrix.Count);
         return GetGraphic(viewBox, darkColorHex, lightColorHex, drawQuietZones, epsFormat);
     }
 
-    public string GetGraphic(Size viewBox, bool drawQuietZones = true, bool epsFormat = false)
+    public string GetGraphic(SKSize viewBox, bool drawQuietZones = true, bool epsFormat = false)
     {
-        return GetGraphic(viewBox, Color.Black, Color.White, drawQuietZones, epsFormat);
+        return GetGraphic(viewBox, SKColors.Black, SKColors.White, drawQuietZones, epsFormat);
     }
 
-    public string GetGraphic(Size viewBox, string darkColorHex, string lightColorHex, bool drawQuietZones = true,
+    public string GetGraphic(SKSize viewBox, string darkColorHex, string lightColorHex, bool drawQuietZones = true,
         bool epsFormat = false)
     {
-        return GetGraphic(viewBox, ColorTranslator.FromHtml(darkColorHex), ColorTranslator.FromHtml(lightColorHex),
-            drawQuietZones, epsFormat);
+        return GetGraphic(viewBox, SKColor.Parse(darkColorHex), SKColor.Parse(lightColorHex), drawQuietZones,
+            epsFormat);
     }
 
-    public string GetGraphic(Size viewBox, Color darkColor, Color lightColor, bool drawQuietZones = true,
+    public string GetGraphic(SKSize viewBox, SKColor darkColor, SKColor lightColor, bool drawQuietZones = true,
         bool epsFormat = false)
     {
         var offset = drawQuietZones ? 0 : 4;
@@ -124,9 +124,10 @@ showpage
 
         var psFile = string.Format(PS_HEADER, DateTime.Now.ToString("s"), CleanSvgVal(viewBox.Width),
             CleanSvgVal(pointsPerModule), epsFormat ? "EPSF-3.0" : string.Empty);
-        psFile += string.Format(PS_FUNCTIONS, CleanSvgVal(darkColor.R / 255.0), CleanSvgVal(darkColor.G / 255.0),
-            CleanSvgVal(darkColor.B / 255.0), CleanSvgVal(lightColor.R / 255.0), CleanSvgVal(lightColor.G / 255.0),
-            CleanSvgVal(lightColor.B / 255.0), drawableModulesCount);
+        psFile += string.Format(PS_FUNCTIONS, CleanSvgVal(darkColor.Red / 255.0), CleanSvgVal(darkColor.Green / 255.0),
+            CleanSvgVal(darkColor.Blue / 255.0), CleanSvgVal(lightColor.Red / 255.0),
+            CleanSvgVal(lightColor.Green / 255.0),
+            CleanSvgVal(lightColor.Blue / 255.0), drawableModulesCount);
 
         for (var xi = offset; xi < offset + drawableModulesCount; xi++)
         {

@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using QrSharp;
+﻿using QrSharp;
 using QrSharpTest.Helpers;
 using Shouldly;
 using SkiaSharp;
@@ -27,7 +26,7 @@ public class SvgQrCodeRendererTest
         //Create QR code
 
         var data = QrCodeGenerator.CreateQrCode("This is a quick test! 123#?", QrCodeGenerator.ECCLevel.H);
-        var svg = new SvgQrCode(data).GetGraphic(10, Color.Red, Color.White);
+        var svg = new SvgQrCode(data).GetGraphic(10, SKColors.Red, SKColors.White);
         var result = HelperFunctions.StringToHash(svg);
         result.ShouldBe("1baa8c6ac3bd8c1eabcd2c5422dd9f78");
     }
@@ -39,7 +38,7 @@ public class SvgQrCodeRendererTest
         //Create QR code
 
         var data = QrCodeGenerator.CreateQrCode("This is a quick test! 123#?", QrCodeGenerator.ECCLevel.H);
-        var svg = new SvgQrCode(data).GetGraphic(new Size(128, 128));
+        var svg = new SvgQrCode(data).GetGraphic(new SKSize(128, 128));
         var result = HelperFunctions.StringToHash(svg);
         result.ShouldBe("56719c7db39937c74377855a5dc4af0a");
     }
@@ -51,7 +50,8 @@ public class SvgQrCodeRendererTest
         //Create QR code
 
         var data = QrCodeGenerator.CreateQrCode("This is a quick test! 123#?", QrCodeGenerator.ECCLevel.H);
-        var svg = new SvgQrCode(data).GetGraphic(new Size(128, 128), sizingMode: SvgQrCode.SizingMode.ViewBoxAttribute);
+        var svg = new SvgQrCode(data).GetGraphic(new SKSize(128, 128),
+            sizingMode: SvgQrCode.SizingMode.ViewBoxAttribute);
         var result = HelperFunctions.StringToHash(svg);
         result.ShouldBe("788afdb693b0b71eed344e495c180b60");
     }
@@ -63,8 +63,9 @@ public class SvgQrCodeRendererTest
         //Create QR code
 
         var data = QrCodeGenerator.CreateQrCode("This is a quick test! 123#?", QrCodeGenerator.ECCLevel.H);
-        var svg = new SvgQrCode(data).GetGraphic(10, Color.Red, Color.White, false);
+        var svg = new SvgQrCode(data).GetGraphic(10, SKColors.Red, SKColors.White, false);
         var result = HelperFunctions.StringToHash(svg);
+        File.WriteAllText(Path.Combine("C:/temp/123_.svg"), svg);
         result.ShouldBe("2a582427d86b51504c08ebcbcf0472bd");
     }
 
@@ -94,7 +95,7 @@ public class SvgQrCodeRendererTest
         var skiaBitmap = SKBitmap.Decode(stream);
         var logoObj = new SvgQrCode.SvgLogo(skiaBitmap);
         logoObj.GetMediaType().ShouldBe(SvgQrCode.SvgLogo.MediaType.PNG);
-        var svg = new SvgQrCode(data).GetGraphic(10, Color.DarkGray, Color.White, logo: logoObj);
+        var svg = new SvgQrCode(data).GetGraphic(10, SKColors.DarkGray, SKColors.White, logo: logoObj);
         var result = HelperFunctions.StringToHash(svg);
         result.ShouldBe("bba648df2cf54c80c10d96f3465593f0");
     }
@@ -111,7 +112,7 @@ public class SvgQrCodeRendererTest
             "noun_Scientist_2909361.svg"));
         var logoObj = new SvgQrCode.SvgLogo(logoSVG, 20);
         logoObj.GetMediaType().ShouldBe(SvgQrCode.SvgLogo.MediaType.SVG);
-        var svg = new SvgQrCode(data).GetGraphic(10, Color.DarkGray, Color.White, logo: logoObj);
+        var svg = new SvgQrCode(data).GetGraphic(10, SKColors.DarkGray, SKColors.White, logo: logoObj);
         var result = HelperFunctions.StringToHash(svg);
         result.ShouldBe("855eb988d3af035abd273ed1629aa952");
     }
@@ -127,7 +128,7 @@ public class SvgQrCodeRendererTest
         var logoSvg = File.ReadAllText(Path.Combine(HelperFunctions.GetAssemblyPath(), "assets",
             "noun_Scientist_2909361.svg"));
         var logoObj = new SvgQrCode.SvgLogo(logoSvg, 20, iconEmbedded: false);
-        var svg = new SvgQrCode(data).GetGraphic(10, Color.DarkGray, Color.White, logo: logoObj);
+        var svg = new SvgQrCode(data).GetGraphic(10, SKColors.DarkGray, SKColors.White, logo: logoObj);
         var result = HelperFunctions.StringToHash(svg);
         result.ShouldBe("bd442ea77d45a41a4f490b8d41591e04");
     }
