@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<NoWarn />
+  </PropertyGroup>
+
+  <PropertyGroup>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<PackageId>QrSharp</PackageId>
+	<Version>0.1.0</Version>
+	<Authors>Silas Zahner</Authors>
+	<PackageOwners>Silas Zahner</PackageOwners>
+	<AssemblyName>QrSharp</AssemblyName>
+	<PackageProjectUrl>https://github.com/superstreber3/QrSharp/</PackageProjectUrl>
+	<PackageIcon>QrSharpLogo.jpeg</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageTags>c#;csharp;qr;qrcoder;qrcode;qr-generator;qr-code-generator;qr-sharp</PackageTags>
+	<RepositoryUrl>https://github.com/superstreber3/QrSharp.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<Description>QrSharp is a simple library built on the foundations of QRCoder, written in C#.NET, which enables you to create QR codes.</Description>
+	<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+	<SignAssembly>True</SignAssembly>
+	<AssemblyOriginatorKeyFile>C:\Projects\Projects\QrSharp\QrSharpKey.snk</AssemblyOriginatorKeyFile>
+	<Title>QrSharp</Title>
+	<Copyright>Copyright (c) 2023 Silas Zahner</Copyright>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<None Include="..\.editorconfig" Link=".editorconfig" />
+	<None Include="..\LICENSE.txt">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+	<None Include="..\QrSharpLogo.jpeg">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+	<None Include="..\README.md">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="SkiaSharp" Version="2.88.3" />
+  </ItemGroup>
+
+</Project>

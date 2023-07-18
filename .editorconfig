@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA1829: Use Length/Count property instead of Count() when available
+dotnet_diagnostic.CA1829.severity = warning
