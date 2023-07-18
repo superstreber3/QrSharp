@@ -51,11 +51,11 @@ public class BitmapByteQrCode : AbstractQrCode, IDisposable
         bmp.AddRange(new byte[] { 0x01, 0x00, 0x18, 0x00 });
 
         //draw Qr code
-        for (var x = sideLength - 1; x >= 0; x = x - pixelsPerModule)
+        for (var x = sideLength - 1; x >= 0; x -= pixelsPerModule)
         {
             for (var pm = 0; pm < pixelsPerModule; pm++)
             {
-                for (var y = 0; y < sideLength; y = y + pixelsPerModule)
+                for (var y = 0; y < sideLength; y += pixelsPerModule)
                 {
                     var module =
                         QrCodeData.ModuleMatrix[(x + pixelsPerModule) / pixelsPerModule - 1][
@@ -66,7 +66,11 @@ public class BitmapByteQrCode : AbstractQrCode, IDisposable
                     }
                 }
 
-                if (sideLength % 4 != 0)
+                if (sideLength % 4 == 0)
+                {
+                    continue;
+                }
+
                 {
                     for (var i = 0; i < sideLength % 4; i++)
                     {

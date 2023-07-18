@@ -219,7 +219,7 @@ public class QrCodeGenerator : IDisposable
     ///     code.
     /// </exception>
     /// <returns>Returns the raw Qr code data which can be used for rendering.</returns>
-    public QrCodeData CreateQrCode(byte[] binaryData, ECCLevel eccLevel)
+    public static QrCodeData CreateQrCode(byte[] binaryData, ECCLevel eccLevel)
     {
         return GenerateQrCode(binaryData, eccLevel);
     }
