@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Text;
 using QrSharp.Exceptions;
 
@@ -1842,7 +1842,7 @@ public class QrCodeGenerator : IDisposable
         }
     }
 
-    private class Point
+    private readonly struct Point
     {
         public Point(int x, int y)
         {
@@ -1854,7 +1854,7 @@ public class QrCodeGenerator : IDisposable
         public int Y { get; }
     }
 
-    private class Rectangle
+    private readonly struct Rectangle
     {
         public Rectangle(int x, int y, int w, int h)
         {
