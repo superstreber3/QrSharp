@@ -1,6 +1,6 @@
 using System.Globalization;
 using System.Reflection;
-using QrSharp;
+using QrSharp.PayloadTypes;
 using QrSharpTest.Helpers;
 using Shouldly;
 
@@ -886,7 +886,8 @@ public class PayloadGeneratorTest
     {
         var iban = "DE15268500010154131577";
 
-        var method = typeof(PayloadGenerator).GetMethod("IsValidIban", BindingFlags.NonPublic | BindingFlags.Static);
+        var method =
+            typeof(QrSharp.PayloadGenerator).GetMethod("IsValidIban", BindingFlags.NonPublic | BindingFlags.Static);
         var result = (bool)method.Invoke(null, new object[] { iban });
 
         result.ShouldBe(true);
@@ -899,7 +900,8 @@ public class PayloadGeneratorTest
     {
         var iban = "CH1900767000U00121977";
 
-        var method = typeof(PayloadGenerator).GetMethod("IsValidIban", BindingFlags.NonPublic | BindingFlags.Static);
+        var method =
+            typeof(QrSharp.PayloadGenerator).GetMethod("IsValidIban", BindingFlags.NonPublic | BindingFlags.Static);
         var result = (bool)method.Invoke(null, new object[] { iban });
 
         result.ShouldBe(true);
@@ -912,7 +914,8 @@ public class PayloadGeneratorTest
     {
         var iban = "DE29268500010154131577";
 
-        var method = typeof(PayloadGenerator).GetMethod("IsValidIban", BindingFlags.NonPublic | BindingFlags.Static);
+        var method =
+            typeof(QrSharp.PayloadGenerator).GetMethod("IsValidIban", BindingFlags.NonPublic | BindingFlags.Static);
         var result = (bool)method.Invoke(null, new object[] { iban });
 
         result.ShouldBe(false);
@@ -925,7 +928,8 @@ public class PayloadGeneratorTest
     {
         var iban = "CH2430043000000789012";
 
-        var method = typeof(PayloadGenerator).GetMethod("IsValidQrIban", BindingFlags.NonPublic | BindingFlags.Static);
+        var method =
+            typeof(QrSharp.PayloadGenerator).GetMethod("IsValidQrIban", BindingFlags.NonPublic | BindingFlags.Static);
         var result = (bool)method.Invoke(null, new object[] { iban });
 
         result.ShouldBe(true);
@@ -937,7 +941,8 @@ public class PayloadGeneratorTest
     {
         var iban = "CH3908704016075473007";
 
-        var method = typeof(PayloadGenerator).GetMethod("IsValidQrIban", BindingFlags.NonPublic | BindingFlags.Static);
+        var method =
+            typeof(QrSharp.PayloadGenerator).GetMethod("IsValidQrIban", BindingFlags.NonPublic | BindingFlags.Static);
         var result = (bool)method.Invoke(null, new object[] { iban });
 
         result.ShouldBe(false);
