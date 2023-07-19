@@ -13,16 +13,18 @@ public class PayloadGeneratorTest
     public void bitcoin_address_generator_can_generate_address()
     {
         var address = "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W";
-        var amount = .123;
+        var amount = .00001;
         var label = "Some Label to Encode";
         var message = "Some Message to Encode";
+        var lightning =
+            "LNBC10U1P3PJ257PP5YZTKWJCZ5FTL5LAXKAV23ZMZEKAW37ZK6KMV80PK4XAEV5QHTZ7QDPDWD3XGER9WD5KWM36YPRX7U3QD36KUCMGYP282ETNV3SHJCQZPGXQYZ5VQSP5USYC4LK9CHSFP53KVCNVQ456GANH60D89REYKDNGSMTJ6YW3NHVQ9QYYSSQJCEWM5CJWZ4A6RFJX77C490YCED6PEMK0UPKXHY89CMM7SCT66K8GNEANWYKZGDRWRFJE69H9U5U0W57RRCSYSAS7GADWMZXC8C6T0SPJAZUP6";
 
-        var generator = new PayloadGenerator.BitcoinAddress(address, amount, label, message);
+        var generator = new PayloadGenerator.BitcoinAddress(address, amount, label, message, lightning);
 
         generator
             .ToString()
             .ShouldBe(
-                "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Some%20Label%20to%20Encode&message=Some%20Message%20to%20Encode&amount=.123");
+                "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Some%20Label%20to%20Encode&message=Some%20Message%20to%20Encode&amount=.00001&lightning=LNBC10U1P3PJ257PP5YZTKWJCZ5FTL5LAXKAV23ZMZEKAW37ZK6KMV80PK4XAEV5QHTZ7QDPDWD3XGER9WD5KWM36YPRX7U3QD36KUCMGYP282ETNV3SHJCQZPGXQYZ5VQSP5USYC4LK9CHSFP53KVCNVQ456GANH60D89REYKDNGSMTJ6YW3NHVQ9QYYSSQJCEWM5CJWZ4A6RFJX77C490YCED6PEMK0UPKXHY89CMM7SCT66K8GNEANWYKZGDRWRFJE69H9U5U0W57RRCSYSAS7GADWMZXC8C6T0SPJAZUP6");
     }
 
     [Fact]
@@ -54,6 +56,20 @@ public class PayloadGeneratorTest
         generator
             .ToString()
             .ShouldNotContain("message");
+    }
+
+    [Fact]
+    [Category("PayloadGenerator/BitcoinAddress")]
+    public void bitcoin_address_generator_should_skip_missing_lightning()
+    {
+        var address = "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W";
+        var amount = .123;
+
+        var generator = new PayloadGenerator.BitcoinAddress(address, amount);
+
+        generator
+            .ToString()
+            .ShouldNotContain("lightning");
     }
 
     [Fact]
