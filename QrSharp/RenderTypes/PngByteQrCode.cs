@@ -1,7 +1,7 @@
 ﻿using System.IO.Compression;
 using static QrSharp.QrCodeGenerator;
 
-namespace QrSharp;
+namespace QrSharp.RenderTypes;
 
 public sealed class PngByteQrCode : AbstractQrCode, IDisposable
 {
