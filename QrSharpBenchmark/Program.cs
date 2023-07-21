@@ -1,13 +1,34 @@
 ﻿using System.Reflection;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 
 namespace QrSharpBenchmark;
 
 internal static class Program
 {
+    private static IConfig? _chosenConfig;
+
     private static void Main()
     {
+        Console.WriteLine("Choose a profile:");
+        Console.WriteLine("1. Fast");
+        Console.WriteLine("2. Default");
+
+
+        switch (Console.ReadLine())
+        {
+            case "1":
+                _chosenConfig = new FastConfig();
+                break;
+            case "2":
+                _chosenConfig = new DefaultConfig();
+                break;
+            default:
+                Console.WriteLine("Invalid profile choice.");
+                return;
+        }
+
         var benchmarkTypes = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(t => t.GetMethods().Any(m => m.GetCustomAttribute<BenchmarkAttribute>() is not null))
@@ -26,7 +47,7 @@ internal static class Program
         {
             if (classChoice == benchmarkTypes.Length + 1)
             {
-                BenchmarkRunner.Run(benchmarkTypes);
+                BenchmarkRunner.Run(benchmarkTypes, _chosenConfig);
                 return;
             }
 
@@ -58,12 +79,12 @@ internal static class Program
         {
             if (methodChoice == benchmarkMethods.Length + 1)
             {
-                BenchmarkRunner.Run(benchmarkType);
+                BenchmarkRunner.Run(benchmarkType, _chosenConfig);
                 return;
             }
 
             var selectedMethod = benchmarkMethods[methodChoice - 1];
-            BenchmarkRunner.Run(benchmarkType, new[] { selectedMethod });
+            BenchmarkRunner.Run(benchmarkType, new[] { selectedMethod }, _chosenConfig);
         }
         else
         {
