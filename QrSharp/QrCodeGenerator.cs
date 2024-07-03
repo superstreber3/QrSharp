@@ -41,9 +41,9 @@ public class QrCodeGenerator : IDisposable
         Utf8 = 26
     }
 
-    private static readonly char[] AlphanumEncTable = { ' ', '$', '%', '*', '+', '-', '.', '/', ':' };
+    private readonly static char[] AlphanumEncTable = { ' ', '$', '%', '*', '+', '-', '.', '/', ':' };
 
-    private static readonly int[] CapacityBaseValues =
+    private readonly static int[] CapacityBaseValues =
     {
         41, 25, 17, 10, 34, 20, 14, 8, 27, 16, 11, 7, 17, 10, 7, 4, 77, 47, 32, 20, 63, 38, 26, 16, 48, 29, 20, 12, 34,
         20, 14, 8, 127, 77, 53, 32, 101, 61, 42, 26, 77, 47, 32, 20, 58, 35, 24, 15, 187, 114, 78, 48, 149, 90, 62, 38,
@@ -78,7 +78,7 @@ public class QrCodeGenerator : IDisposable
         1273, 784
     };
 
-    private static readonly int[] CapacityEccBaseValues =
+    private readonly static int[] CapacityEccBaseValues =
     {
         19, 7, 1, 19, 0, 0, 16, 10, 1, 16, 0, 0, 13, 13, 1, 13, 0, 0, 9, 17, 1, 9, 0, 0, 34, 10, 1, 34, 0, 0, 28, 16, 1,
         28, 0, 0, 22, 22, 1, 22, 0, 0, 16, 28, 1, 16, 0, 0, 55, 15, 1, 55, 0, 0, 44, 26, 1, 44, 0, 0, 34, 18, 2, 17, 0,
@@ -117,7 +117,7 @@ public class QrCodeGenerator : IDisposable
         48, 1666, 30, 34, 24, 34, 25, 1276, 30, 20, 15, 61, 16
     };
 
-    private static readonly int[] AlignmentPatternBaseValues =
+    private readonly static int[] AlignmentPatternBaseValues =
     {
         0, 0, 0, 0, 0, 0, 0, 6, 18, 0, 0, 0, 0, 0, 6, 22, 0, 0, 0, 0, 0, 6, 26, 0, 0, 0, 0, 0, 6, 30, 0, 0, 0, 0, 0, 6,
         34, 0, 0, 0, 0, 0, 6, 22, 38, 0, 0, 0, 0, 6, 24, 42, 0, 0, 0, 0, 6, 26, 46, 0, 0, 0, 0, 6, 28, 50, 0, 0, 0, 0,
@@ -131,17 +131,17 @@ public class QrCodeGenerator : IDisposable
         142, 170
     };
 
-    private static readonly int[] RemainderBits =
+    private readonly static int[] RemainderBits =
     {
         0, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0,
         0, 0, 0
     };
 
-    private static readonly List<AlignmentPattern> AlignmentPatternTable = CreateAlignmentPatternTable();
-    private static readonly List<ECCInfo> CapacityEccTable = CreateCapacityECCTable();
-    private static readonly List<VersionInfo> CapacityTable = CreateCapacityTable();
-    private static readonly List<Antilog> GaloisField = CreateAntilogTable();
-    private static readonly Dictionary<char, int> AlphanumEncDict = CreateAlphanumEncDict();
+    private readonly static List<AlignmentPattern> AlignmentPatternTable = CreateAlignmentPatternTable();
+    private readonly static List<ECCInfo> CapacityEccTable = CreateCapacityECCTable();
+    private readonly static List<VersionInfo> CapacityTable = CreateCapacityTable();
+    private readonly static List<Antilog> GaloisField = CreateAntilogTable();
+    private readonly static Dictionary<char, int> AlphanumEncDict = CreateAlphanumEncDict();
 
     /// <summary>
     ///     Initializes the Qr code generator

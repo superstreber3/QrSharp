@@ -373,7 +373,7 @@ public static partial class PayloadGenerator
 
             private const string BR = "\r\n";
 
-            private static readonly HashSet<string> TwoLetterCodes = ValidTwoLetterCodes();
+            private readonly static HashSet<string> TwoLetterCodes = ValidTwoLetterCodes();
             private readonly AddressType _addressType;
             private readonly string _name, _country;
             private readonly string? _zipCode, _city, _streetOrAddressLine1, _houseNumberOrAddressLine2;
