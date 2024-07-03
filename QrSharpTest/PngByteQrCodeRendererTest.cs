@@ -1,4 +1,5 @@
 ﻿using QrSharp;
+using QrSharp.RenderTypes;
 using QrSharpTest.Helpers;
 using Shouldly;
 using SkiaSharp;

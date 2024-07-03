@@ -65,7 +65,6 @@ public class SvgQrCodeRendererTest
         var data = QrCodeGenerator.CreateQrCode("This is a quick test! 123#?", QrCodeGenerator.ECCLevel.H);
         var svg = new SvgQrCode(data).GetGraphic(10, SKColors.Red, SKColors.White, false);
         var result = HelperFunctions.StringToHash(svg);
-        File.WriteAllText(Path.Combine("C:/temp/123_.svg"), svg);
         result.ShouldBe("2a582427d86b51504c08ebcbcf0472bd");
     }
 

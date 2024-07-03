@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrSharpBenchmark", "QrSharpBenchmark\QrSharpBenchmark.csproj", "{172B7606-E01D-4329-B0CC-AF1E45E048DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{0F796D1F-BE0D-4FD1-915C-5EC749BFA718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F796D1F-BE0D-4FD1-915C-5EC749BFA718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F796D1F-BE0D-4FD1-915C-5EC749BFA718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172B7606-E01D-4329-B0CC-AF1E45E048DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172B7606-E01D-4329-B0CC-AF1E45E048DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172B7606-E01D-4329-B0CC-AF1E45E048DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172B7606-E01D-4329-B0CC-AF1E45E048DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

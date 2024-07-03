@@ -1,7 +1,7 @@
 ﻿using System.IO.Compression;
 using static QrSharp.QrCodeGenerator;
 
-namespace QrSharp;
+namespace QrSharp.RenderTypes;
 
 public sealed class PngByteQrCode : AbstractQrCode, IDisposable
 {
@@ -99,9 +99,9 @@ public sealed class PngByteQrCode : AbstractQrCode, IDisposable
     /// </remarks>
     private sealed class PngBuilder : IDisposable
     {
-        private static readonly byte[] PngSignature = { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A };
+        private readonly static byte[] PngSignature = { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A };
 
-        private static readonly uint[] CrcTable =
+        private readonly static uint[] CrcTable =
         {
             0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3, 0x0EDB8832,
             0x79DCB8A4, 0xE0D5E91E, 0x97D2D988, 0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91, 0x1DB71064, 0x6AB020F2,
@@ -138,15 +138,15 @@ public sealed class PngByteQrCode : AbstractQrCode, IDisposable
         }; // ReSharper disable InconsistentNaming
 
         // Chunk types
-        private static readonly byte[] IHDR = { 73, 72, 68, 82 };
+        private readonly static byte[] IHDR = { 73, 72, 68, 82 };
 
-        private static readonly byte[] IDAT = { 73, 68, 65, 84 };
+        private readonly static byte[] IDAT = { 73, 68, 65, 84 };
 
-        private static readonly byte[] IEND = { 73, 69, 78, 68 };
+        private readonly static byte[] IEND = { 73, 69, 78, 68 };
 
-        private static readonly byte[] PLTE = { 80, 76, 84, 69 };
+        private readonly static byte[] PLTE = { 80, 76, 84, 69 };
 
-        private static readonly byte[] tRNS = { 116, 82, 78, 83 };
+        private readonly static byte[] tRNS = { 116, 82, 78, 83 };
         // ReSharper enable InconsistentNaming
 
         public enum ColorType : byte
